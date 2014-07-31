@@ -31,9 +31,10 @@ describe('goodLogger', function() {
     });
 
     it('checks to see if directory exists', function() {
-        path.dirname.called.should.be.true;
-        fs.existsSync.called.should.be.true;
-        touch.sync.called.should.be.true;
+        path.dirname.calledOnce;
+        fs.existsSync.called.calledOnce;
+        fs.mkdirSync.called.calledOnce;
+        touch.sync.called.calledOnce;
     });
 
     it('creates a directory and file without a path argument', function() {
@@ -42,11 +43,10 @@ describe('goodLogger', function() {
     });
 
     it('creates file with a path argument', function() {
-        var mockPath = new goodLogger('/foo/bar/baz_log');
+        var mockPath = new goodLogger(LIB_DIR + '/bar/baz_log');
 
         mockPath.transports.file.filename.should.equal('baz_log');
         mockPath.transports.file.dirname.should.contain('bar');
-
     });
 
 });
