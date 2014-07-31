@@ -7,14 +7,20 @@ describe('goodLogger', function() {
     beforeEach(function(){
         this.logger = goodLogger();
 
-        fs.existsSync = sinon.spy();
-        fs.mkdirSync = sinon.spy();
-        touch.sync = sinon.spy();
-        path.dirname = sinon.spy();
+        sinon.spy(fs, 'existsSync');
+        sinon.spy(fs, 'mkdirSync');
+        sinon.spy(touch, 'sync');
+        sinon.spy(path, 'dirname');
     });
 
     afterEach(function() {
         this.logger = {};
+
+        fs.existsSync.restore();
+        fs.mkdirSync.restore();
+        touch.sync.restore();
+        path.dirname.restore();
+
         fs.rmdir(LIB_DIR + "/log/error_log");
     });
 
