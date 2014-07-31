@@ -43,10 +43,10 @@ describe('goodLogger', function() {
     });
 
     it('creates file with a path argument', function() {
-        var mockPath = new goodLogger(LIB_DIR + '/bar/baz_log');
+        var mockPath = new goodLogger(LIB_DIR + '/foo/bar/baz_log');
 
         mockPath.transports.file.filename.should.equal('baz_log');
-        mockPath.transports.file.dirname.should.contain('bar');
+        mockPath.transports.file.dirname.should.contain('foo/bar');
     });
 
 });
