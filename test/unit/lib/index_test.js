@@ -49,4 +49,18 @@ describe('goodLogger', function() {
         mockPath.transports.file.dirname.should.contain('foo/bar');
     });
 
+    it('should log info', function() {
+        var mockPath = new goodLogger(LIB_DIR + '/foo/bar/baz_log');
+
+        mockPath.transports.file.filename.should.equal('baz_log');
+        mockPath.transports.file.dirname.should.contain('foo/bar');
+    });
+
+    it('creates file with a path argument', function() {
+        var mockPath = new goodLogger(LIB_DIR + '/foo/bar/baz_log');
+
+        mockPath.transports.file.filename.should.equal('baz_log');
+        mockPath.transports.file.dirname.should.contain('foo/bar');
+    });
+
 });
